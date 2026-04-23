@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main()
+{
+
+	int numero;
+	int arrreglo[10] = {2, 4, 5, 6, 8, 9, 10, 12, 13, 15};
+
+	printf("Ingresa un numero para buscar si existe: ");
+	scanf("%d", &numero);
+
+	for (int i = 0; i < 10; i++) {  
+		if (arrreglo[i] == numero) { 
+
+			printf("El numero que buscas esta en el arreglo\n");
+			printf("El numero se encuentra en la posicion: %d\n", i);
+			break; 
+
+		}
+
+		else if (arrreglo[i] != numero && i == 9) { 
+			printf("El numero que buscas no esta en el arreglo\n");
+		}
+		
+	}
+
+	return 0;
+}
