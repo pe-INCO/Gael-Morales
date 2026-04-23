@@ -1,0 +1,53 @@
+#include <stdio.h>
+
+int main() {
+    int arreglo[5];
+    int i, opcion, nuevoValor;
+
+    printf("=== MENU ===\n");
+    printf("1. FIFO\n");
+    printf("2. LIFO\n");
+    printf("Elige una opcion: ");
+    scanf("%d", &opcion);
+
+    // Llenar el arreglo
+    printf("\nLlena el arreglo de 5 posiciones:\n");
+    for(i = 0; i < 5; i++) {
+        printf("Posicion %d: ", i);
+        scanf("%d", &arreglo[i]);
+    }
+
+    // Mostrar arreglo original
+    printf("\nArreglo original:\n");
+    for(i = 0; i < 5; i++) {
+        printf("%d ", arreglo[i]);
+    }
+
+    // Pedir nuevo valor
+    printf("\n\nIngresa el valor para reemplazar: ");
+    scanf("%d", &nuevoValor);
+
+    // FIFO o LIFO
+    if(opcion == 1) {
+        // FIFO: reemplaza el primero
+        arreglo[0] = nuevoValor;
+        printf("\nModo FIFO (se reemplazo el primero)\n");
+    }
+    else if(opcion == 2) {
+        // LIFO: reemplaza el ultimo
+        arreglo[4] = nuevoValor;
+        printf("\nModo LIFO (se reemplazo el ultimo)\n");
+    }
+    else {
+        printf("\nOpcion invalida\n");
+        return 0;
+    }
+
+    // Mostrar arreglo final
+    printf("\nArreglo final:\n");
+    for(i = 0; i < 5; i++) {
+        printf("%d ", arreglo[i]);
+    }
+
+    return 0;
+}
