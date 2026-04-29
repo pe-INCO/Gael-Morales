@@ -1,50 +1,58 @@
 #include <stdio.h>
 
 int main() {
-    
-    char cadena[99];
-    int opcion;
-    int i;
+    char frase[100];
 
-    do {
-        printf("\n////// MENU //////\n");
-        printf("Opcion 1: Ingresar frase\n");
-        printf("Opcion 2: Longitud\n");
-        printf("Opcion 3: Primeros 3 caracteres\n");
-        printf("Opcion 8: Salir\n");
+    printf("Ingresa una palabra: ");
+    scanf("%s", frase);  // lee solo una palabra (hasta espacio)
 
-        printf("Ingresa una opcion: ");
-        scanf("%d", &opcion);
+    // Longitud
+    int i = 0;
+    while (frase[i] != '\0') {
+        i++;
+    }
+    printf("La longitud de la palabra es: %d\n", i);
 
-        switch (opcion) {
+    // Primeros 3 caracteres
+    printf("Los tres primeros caracteres son: ");
+    for (int j = 0; j < 3 && frase[j] != '\0'; j++) {
+        printf("%c", frase[j]);
+    }
+    printf("\n");
 
-            case 1:
-                printf("Ingresa una frase: ");
-                scanf("%s", cadena);
-                break;
-
-            case 2:
-                i = 0;
-                while (cadena[i] != '\0') {
-                    i++;
-                }
-                printf("La longitud es: %d\n", i);
-                break;
-
-            case 3:
-                printf("Los tres primeros caracteres son: %c, %c, %c\n",
-                       cadena[0], cadena[1], cadena[2]);
-                break;
-
-            case 8:
-                printf("Saliendo del programa...\n");
-                break;
-
-            default:
-                printf("Opcion no valida\n");
+    // Mayúsculas (manual)
+    printf("En mayúsculas: ");
+    for (int j = 0; frase[j] != '\0'; j++) {
+        if (frase[j] >= 'a' && frase[j] <= 'z') {
+            printf("%c", frase[j] - 32);
+        } else {
+            printf("%c", frase[j]);
         }
+    }
+    printf("\n");
 
-    } while (opcion != 8);
+    // Minúsculas (manual)
+    printf("En minúsculas: ");
+    for (int j = 0; frase[j] != '\0'; j++) {
+        if (frase[j] >= 'A' && frase[j] <= 'Z') {
+            printf("%c", frase[j] + 32);
+        } else {
+            printf("%c", frase[j]);
+        }
+    }
+    printf("\n");
+
+    // Reemplazar vocales por @
+    printf("Reemplazando vocales por @: ");
+    for (int j = 0; frase[j] != '\0'; j++) {
+        char c = frase[j];
+        if (c=='a'||c=='e'||c=='i'||c=='o'||c=='u'||
+            c=='A'||c=='E'||c=='I'||c=='O'||c=='U') {
+            printf("@");
+        } else {
+            printf("%c", c);
+        }
+    }
 
     return 0;
 }
