@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+int main() {
+    FILE *archivo;
+    char linea[100];
+    int retiro;
+    char nombre[50];
+
+    // =====================
+    // ESCRITURA
+    // =====================
+    
+    archivo = fopen("PruebaDatos.txt", "a");
+
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo para escritura\n");
+        return 1;
+    }
+
+    printf("Ingresa un nombre: ");
+    fgets(nombre, sizeof(nombre), stdin);
+    printf("Ingresa un retiro: ");
+    scanf("%d", &retiro);
+    fprintf(archivo, "%s Retiro: $%d pesos", nombre, retiro);
+
+    fclose(archivo);
+    printf("Archivo escrito exitosamente\n\n");
+
+    // =====================
+    // LECTURA
+    // =====================
+    archivo = fopen("PruebaDatos.txt", "r");
+
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo para lectura\n");
+        return 1;
+    }
+
+    printf("Contenido del archivo:\n");
+
+    while (fgets(linea, sizeof(linea), archivo) != NULL) {
+        printf("%s", linea);
+    }
+
+    fclose(archivo);
+
+    return 0;
+}
